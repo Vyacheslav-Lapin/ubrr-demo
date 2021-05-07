@@ -15,6 +15,7 @@
     <module>oop-demo</module>
     <module>strings</module>
     <module>io</module>
+    <module>fp</module>
   </modules>
 
   <properties>
@@ -53,6 +54,7 @@
     <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
     <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    <maven.compiler.parameters>true</maven.compiler.parameters>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
     <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
     <!--endregion-->
@@ -220,7 +222,7 @@
 
   <build>
 
-    <defaultGoal>clean install</defaultGoal>
+    <defaultGoal>clean verify</defaultGoal>
 
     <pluginManagement>
       <plugins>
@@ -230,6 +232,7 @@
           <version>${maven-compiler-plugin.version}</version>
           <configuration>
             <compilerArgs>
+              <arg>-parameters</arg>
               <arg>--enable-preview</arg>
               <!--<arg>-Xlint:preview</arg>-->
               <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
@@ -265,7 +268,7 @@
               <configuration>
                 <files>
                   <!--suppress MavenModelInspection -->
-                  <file>${maven.multiModuleProjectDirectory}/maven.properties</file>
+                  <file>${maven.multiModuleProjectDirectory}/../maven.properties</file>
                 </files>
               </configuration>
             </execution>

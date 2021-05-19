@@ -16,6 +16,9 @@
     <module>strings</module>
     <module>io</module>
     <module>fp</module>
+    <module>exceptions</module>
+    <module>collections</module>
+    <module>concurrency</module>
   </modules>
 
   <properties>
@@ -232,7 +235,7 @@
           <version>${maven-compiler-plugin.version}</version>
           <configuration>
             <compilerArgs>
-              <arg>-parameters</arg>
+              <!--<arg>-parameters</arg>-->
               <arg>--enable-preview</arg>
               <!--<arg>-Xlint:preview</arg>-->
               <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>

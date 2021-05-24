@@ -19,6 +19,7 @@
     <module>exceptions</module>
     <module>collections</module>
     <module>concurrency</module>
+    <module>jdbc</module>
   </modules>
 
   <properties>
@@ -35,7 +36,7 @@
     <!--region libs-->
     <lombok.version>1.18.20</lombok.version>
     <vavr.version>1.0.0-alpha-3</vavr.version>
-    <h2.version>1.4.197</h2.version>
+    <h2.version>1.4.200</h2.version>
     <postgresql.version>42.2.19</postgresql.version>
     <HikariCP.version>3.2.0</HikariCP.version>
     <logback-classic.version>1.3.0-alpha5</logback-classic.version>

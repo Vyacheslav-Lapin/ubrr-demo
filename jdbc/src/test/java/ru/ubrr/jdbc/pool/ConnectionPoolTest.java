@@ -1,12 +1,13 @@
 package ru.ubrr.jdbc.pool;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static ru.ubrr.jdbc.pool.ConnectionPool.INSTANCE;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
-import lombok.val;
 import org.intellij.lang.annotations.Language;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,12 +23,13 @@ class ConnectionPoolTest {
   @SneakyThrows
   @DisplayName("Connection pool works correctly")
   void connectionPoolWorksCorrectlyTest() {
-    @Cleanup val connection = ConnectionPool.getInstance().get();
-    @Cleanup val statement = connection.createStatement();
+    @Cleanup Connection connection = INSTANCE.get();
+    @Cleanup Statement statement = connection.createStatement();
     @Cleanup ResultSet resultSet = statement.executeQuery(SQL);
 
-    if (resultSet.next())
-      assertThat(resultSet.getString("first_name"))
-          .isEqualTo("Jose");
+    assertThat(resultSet.next()).isTrue();
+
+    assertThat(resultSet.getString("first_name"))
+        .isEqualTo("Jose");
   }
 }

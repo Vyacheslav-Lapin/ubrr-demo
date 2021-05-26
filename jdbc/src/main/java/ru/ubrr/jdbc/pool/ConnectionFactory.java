@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -25,7 +24,7 @@ public class ConnectionFactory implements Supplier<Stream<Connection>> {
 
   int poolSize;
 
-  String sqlScriptsPath;
+  String initScriptsPath;
 
   public Stream<Connection> get() {
     return Stream.generate(
@@ -38,7 +37,7 @@ public class ConnectionFactory implements Supplier<Stream<Connection>> {
 
     val toSqlScriptFileName =
         Function2.<String, String, String>of("/%s/%s.sql"::formatted)
-            .apply(sqlScriptsPath);
+            .apply(initScriptsPath);
 
     return IntStream.iterate(1, operand -> operand + 1)
                .mapToObj(String::valueOf)

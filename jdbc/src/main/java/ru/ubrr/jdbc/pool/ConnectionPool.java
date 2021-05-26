@@ -10,10 +10,9 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
-import lombok.experimental.ExtensionMethod;
 import lombok.experimental.NonFinal;
 import lombok.val;
-import ru.ubrr.it.io.properties.PropertiesBinder;
+import ru.ubrr.jdbc.properties.PropertiesBinder;
 
 //@ExtensionMethod(PropertiesBinder.class)
 public enum ConnectionPool implements Supplier<Connection>, Closeable {
@@ -39,9 +38,11 @@ public enum ConnectionPool implements Supplier<Connection>, Closeable {
                             .collect(Collectors.toCollection(
                                 connectionFactory.toSizedCollection(ArrayBlockingQueue::new)));
 
+    val initSqlFilesContent = connectionFactory.getInitSqlFilesContent();
+
     @Cleanup val connection = get();
     @Cleanup val statement = connection.createStatement();
-    statement.executeUpdate(connectionFactory.getInitSqlFilesContent());
+    statement.executeUpdate(initSqlFilesContent);
   }
 
   @NonFinal

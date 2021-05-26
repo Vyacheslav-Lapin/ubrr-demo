@@ -12,9 +12,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import ru.ubrr.it.io.InputStreamUtils;
+import ru.ubrr.jdbc.InputStreamUtils;
 
+@Slf4j
 @RequiredArgsConstructor
 public class ConnectionFactory implements Supplier<Stream<Connection>> {
 

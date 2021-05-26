@@ -1,4 +1,4 @@
-package ru.ubrr.it.io;
+package ru.ubrr.it.io.example;
 
 import lombok.SneakyThrows;
 import lombok.val;

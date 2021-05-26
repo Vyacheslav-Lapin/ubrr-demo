@@ -1,4 +1,4 @@
-package ru.ubrr.it.io;
+package ru.ubrr.it.io.example;
 
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;

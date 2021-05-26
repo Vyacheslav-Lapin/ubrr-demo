@@ -6,6 +6,7 @@ import static ru.ubrr.it.io.TestUtils.fromSystemOutPrintln;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import ru.ubrr.it.io.example.IoExample;
 
 class IoExampleTest {
 

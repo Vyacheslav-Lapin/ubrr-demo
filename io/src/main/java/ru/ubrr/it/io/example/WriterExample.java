@@ -1,4 +1,4 @@
-package ru.ubrr.it.io;
+package ru.ubrr.it.io.example;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 

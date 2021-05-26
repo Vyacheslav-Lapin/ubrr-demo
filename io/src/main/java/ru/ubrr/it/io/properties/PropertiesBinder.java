@@ -13,31 +13,31 @@ import lombok.val;
 import org.jetbrains.annotations.NotNull;
 import ru.ubrr.it.io.InputStreamUtils;
 
-@UtilityClass
+//@UtilityClass
 @ExtensionMethod(InputStreamUtils.class)
 public class PropertiesBinder {
 
   @NotNull
-  public <T> T from(@NotNull Class<T> tClass) {
+  static public <T> T from(@NotNull Class<T> tClass) {
     String name = tClass.getSimpleName();
     return from(name.substring(0, 1).toLowerCase() + name.substring(1), tClass);
   }
 
   @NotNull
-  public <T> T from(String fileName, Class<T> tClass) {
+  static public <T> T from(String fileName, Class<T> tClass) {
     val properties = new Properties();
     fileName.withFileInputStream(properties::load); // InputStreamUtils.withFileInputStream(fileName, properties::load);
     return from(properties::getProperty, tClass);
   }
 
   @NotNull
-  public <T> T from(UnaryOperator<String> getProperty, Class<T> tClass) {
+  static public <T> T from(UnaryOperator<String> getProperty, Class<T> tClass) {
     return from(getProperty, getMaxParamsCountConstructor(tClass));
   }
 
   @NotNull
   @SneakyThrows
-  public <T> T from(UnaryOperator<String> getProperty,
+  static public <T> T from(UnaryOperator<String> getProperty,
                     @NotNull Constructor<T> constructor) {
     return constructor.newInstance(
         Arrays.stream(constructor.getParameters())
@@ -48,14 +48,15 @@ public class PropertiesBinder {
 
   @NotNull
   @SneakyThrows
-  private <T> Constructor<T> getMaxParamsCountConstructor(@NotNull Class<T> propsClass) {
+  static private <T> Constructor<T> getMaxParamsCountConstructor(@NotNull Class<T> propsClass) {
     //noinspection unchecked
     return (Constructor<T>) Arrays.stream(propsClass.getConstructors())
                                 .max(Comparator.comparingInt(Constructor::getParameterCount))
-                                .orElseThrow(() -> new PropsBindException("There is no any constructor!"));
+                                .orElseThrow();
+//                                .orElseThrow(() -> new PropsBindException("There is no any constructor!"));
   }
 
-  private Object resolveParameter(@NotNull UnaryOperator<String> getValue,
+  static private Object resolveParameter(@NotNull UnaryOperator<String> getValue,
                                          @NotNull Parameter parameter) {
     String name = parameter.getName();
     String value = getValue.apply(name);

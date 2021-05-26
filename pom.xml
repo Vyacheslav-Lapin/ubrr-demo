@@ -236,7 +236,7 @@
           <version>${maven-compiler-plugin.version}</version>
           <configuration>
             <compilerArgs>
-              <!--<arg>-parameters</arg>-->
+              <arg>-parameters</arg>
               <arg>--enable-preview</arg>
               <!--<arg>-Xlint:preview</arg>-->
               <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
@@ -272,7 +272,7 @@
               <configuration>
                 <files>
                   <!--suppress MavenModelInspection -->
-                  <file>${maven.multiModuleProjectDirectory}/../maven.properties</file>
+                  <file>${maven.multiModuleProjectDirectory}/maven.properties</file>
                 </files>
               </configuration>
             </execution>

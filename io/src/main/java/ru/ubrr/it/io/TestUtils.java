@@ -6,16 +6,17 @@ import lombok.val;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-@UtilityClass
-public class TestUtils {
+//@UtilityClass
 
-  String LINE_SEPARATOR = System.lineSeparator();
-  String TEST_RESOURCES_PATH = "./src/test/resources/";
+public final class TestUtils {
+
+  static String LINE_SEPARATOR = System.lineSeparator();
+  static String TEST_RESOURCES_PATH = "./src/test/resources/";
 
   @NotNull
   @SneakyThrows
   @Contract("_ -> new")
-  public String fromSystemOutPrint(@NotNull Runnable task) {
+  static public String fromSystemOutPrint(@NotNull Runnable task) {
     return OutputStreamUtils.fromPrintStream(
         printStream -> {
           val realOut = System.out;
@@ -27,7 +28,7 @@ public class TestUtils {
   }
 
   @NotNull
-  public String fromSystemOutPrintln(@NotNull Runnable runnable) {
+  static public String fromSystemOutPrintln(@NotNull Runnable runnable) {
     String s = fromSystemOutPrint(runnable);
     return s.endsWith(LINE_SEPARATOR) ?
                s.substring(0, s.length() - LINE_SEPARATOR.length())
@@ -36,7 +37,7 @@ public class TestUtils {
 
   @NotNull
   @Contract(pure = true)
-  public String toTestResourceFilePath(@NotNull String fileName) {
+  static public String toTestResourceFilePath(@NotNull String fileName) {
     return TEST_RESOURCES_PATH + fileName;
   }
 }

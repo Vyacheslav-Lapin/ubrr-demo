@@ -1,4 +1,4 @@
-package ru.ubrr.it.io;
+package ru.ubrr.it.io.example;
 
 import java.util.Scanner;
 import lombok.Cleanup;

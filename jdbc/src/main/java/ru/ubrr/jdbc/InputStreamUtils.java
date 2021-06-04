@@ -26,10 +26,10 @@ public class InputStreamUtils {
   public Optional<String> getFileAsString(String fileName) {
     val path = fileName.startsWith("/") ? fileName : "/" + fileName;
     return Optional.ofNullable(InputStreamUtils.class.getResource(path))
-               .map(URL::getFile)
-               .map(s -> s.charAt(2) == ':' ? s.substring(1) : s)
-               .map(Paths::get)
-               .map(CheckedFunction1.<Path, String>narrow(Files::readString)
-                        .recover(throwable -> null));
+        .map(URL::getFile)
+        .map(s -> s.charAt(2) == ':' ? s.substring(1) : s)
+        .map(Paths::get)
+        .map(CheckedFunction1.<Path, String>narrow(Files::readString)
+            .recover(throwable -> null));
   }
 }

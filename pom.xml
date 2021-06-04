@@ -20,6 +20,7 @@
     <module>collections</module>
     <module>concurrency</module>
     <module>jdbc</module>
+    <module>formats</module>
   </modules>
 
   <properties>

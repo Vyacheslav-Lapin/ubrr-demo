@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.ubrr.org/presents" xmlns:tns="http://www.ubrr.org/presents"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:s="http://www.ubrr.org/sock"
+        xmlns:c="http://www.ubrr.org/card"
+        elementFormDefault="qualified">
+
+  <import schemaLocation="sock.xsd" namespace="http://www.ubrr.org/sock"/>
+  <import schemaLocation="card.xsd" namespace="http://www.ubrr.org/card"/>
+
+  <element name="presents" type="tns:PresentType"/>
+
+  <complexType name="PresentType">
+    <sequence>
+      <element name="present">
+        <complexType>
+          <sequence>
+            <element name="sock" type="s:SockType"/>
+            <element name="card" type="c:CardType"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

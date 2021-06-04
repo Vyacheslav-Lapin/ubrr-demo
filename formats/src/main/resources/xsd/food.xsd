@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://ubrr.ru/it/courses/java/formats/xml"
+        elementFormDefault="qualified"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+         http://www.w3.org/2001/XMLSchema
+         http://www.w3.org/2001/XMLSchema.xsd">
+
+  <element name="breakfast-menu">
+    <complexType>
+      <sequence>
+        <element name="food" maxOccurs="unbounded">
+          <complexType>
+            <sequence>
+              <element name="name" type="token"/>
+              <element name="price" type="token"/>
+              <element name="description" type="string"/>
+              <element name="calories" type="positiveInteger"/>
+            </sequence>
+            <attribute name="id" type="positiveInteger" use="required"/>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+
+</schema>

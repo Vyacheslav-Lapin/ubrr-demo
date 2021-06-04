@@ -14,11 +14,13 @@ import lombok.val;
 
 public class HelloWorldExample {
 
+  public static final String URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1";
+
   @SneakyThrows
   public static void main(String[] args) {
 //    val aClass = Class.forName("org.h2.Driver");
 
-    @Cleanup val connection = DriverManager.getConnection("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
+    @Cleanup val connection = DriverManager.getConnection(URL);
     @Cleanup val statement = connection.createStatement();
     statement.executeUpdate("create table student (%s identity, %s varchar not null, %s int)".formatted(id, name, groupId));
     statement.executeUpdate("insert into student (%s, %s) values ('Вася Пупкин', 123456), ('Фёдор Ермаков', 654321)".formatted(name, groupId));

@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import lombok.val;
 import org.xml.sax.InputSource;
 import org.xml.sax.helpers.XMLReaderFactory;
+import ru.ubrr.it.courses.java.formats.xml.Food;
 
 public class SaxDemo {
   @SneakyThrows

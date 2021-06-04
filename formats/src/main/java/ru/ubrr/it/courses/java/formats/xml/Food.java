@@ -1,4 +1,4 @@
-package ru.ubrr.it.courses.java.formats.xml.sax;
+package ru.ubrr.it.courses.java.formats.xml;
 
 import lombok.Data;
 

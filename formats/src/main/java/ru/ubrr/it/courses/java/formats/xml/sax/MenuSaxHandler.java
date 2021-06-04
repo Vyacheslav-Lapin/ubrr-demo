@@ -1,6 +1,6 @@
 package ru.ubrr.it.courses.java.formats.xml.sax;
 
-import static ru.ubrr.it.courses.java.formats.xml.sax.MenuTagName.FOOD;
+import static ru.ubrr.it.courses.java.formats.xml.MenuTagName.FOOD;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
+import ru.ubrr.it.courses.java.formats.xml.Food;
+import ru.ubrr.it.courses.java.formats.xml.MenuTagName;
 
 public class MenuSaxHandler extends DefaultHandler {
 

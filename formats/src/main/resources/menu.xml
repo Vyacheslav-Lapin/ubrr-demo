@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<breakfast-menu xmlns="http://ubrr.ru/it/courses/java/formats/xml">
+<breakfast-menu xmlns="http://ubrr.ru/it/courses/java/formats/xml"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="
+                  http://ubrr.ru/it/courses/java/formats/xml
+                  ./xsd/food.xsd">
   <food id="1">
     <name>Belgian Waffles</name>
     <price>$5.95</price>

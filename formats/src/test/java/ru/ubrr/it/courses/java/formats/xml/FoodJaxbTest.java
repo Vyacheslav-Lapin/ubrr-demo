@@ -17,7 +17,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.ubrr.it.courses.java.fp.CheckedFunction1Util;
 
 @ExtensionMethod(CheckedFunction1Util.class)
 class FoodJaxbTest {

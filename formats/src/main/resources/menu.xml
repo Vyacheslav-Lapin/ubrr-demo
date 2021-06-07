@@ -9,7 +9,7 @@
   <food id="2">
     <name>Strawberry Belgian Waffles</name>
     <price>$7.95</price>
-    <description>light Belgian waffles covered with strawberrys and whipped cream</description>
+    <description>light Belgian waffles covered with strawberries and whipped cream</description>
     <calories>900</calories>
   </food>
   <!--...-->

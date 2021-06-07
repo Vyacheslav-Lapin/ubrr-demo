@@ -10,11 +10,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldNameConstants;
 
 @Data
 @Builder
 @XmlRootElement
 @NoArgsConstructor
+@FieldNameConstants
 @XmlAccessorType(FIELD)
 @AllArgsConstructor(access = PRIVATE)
 public class Food {

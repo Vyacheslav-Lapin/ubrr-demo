@@ -70,6 +70,7 @@
     <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
     <!--endregion-->
 
+    <jdom2.version>2.0.6</jdom2.version>
   </properties>
 
   <dependencyManagement>
@@ -125,6 +126,11 @@
         <groupId>org.w3c</groupId>
         <artifactId>dom</artifactId>
         <version>${dom.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jdom</groupId>
+        <artifactId>jdom2</artifactId>
+        <version>${jdom2.version}</version>
       </dependency>
 
       <!--region JAX-B -->

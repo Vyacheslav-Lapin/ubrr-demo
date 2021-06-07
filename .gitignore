@@ -1,2 +1,3 @@
 # Project exclude paths
 /oop-demo/target/
+/formats/src/main/resources/domMenu.xml

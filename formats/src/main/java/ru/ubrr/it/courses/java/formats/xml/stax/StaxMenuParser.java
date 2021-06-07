@@ -9,38 +9,43 @@ import static ru.ubrr.it.courses.java.formats.xml.MenuTagName.FOOD;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
+import lombok.experimental.ExtensionMethod;
+import lombok.experimental.UtilityClass;
 import lombok.val;
 import ru.ubrr.it.courses.java.formats.xml.Food;
+import ru.ubrr.it.courses.java.formats.xml.Food.FoodBuilder;
 import ru.ubrr.it.courses.java.formats.xml.MenuTagName;
 
+@UtilityClass
+@ExtensionMethod(XmlStreamReaderUtils.class)
 public class StaxMenuParser {
+
   @SneakyThrows
-  public static void main(String... __) {
+  public void main(String... __) {
     @Cleanup val input = new FileInputStream("formats/src/main/resources/menu.xml");
-
-    List<Food> menu = process(
-        XMLInputFactory
-            .newInstance()
-            .createXMLStreamReader(input));
-
-    for (Food food : menu) {
-      System.out.println(food.getName());
-      System.out.println(food.getCalories());
-    }
+    process(XMLInputFactory.newInstance().createXMLStreamReader(input))
+        .forEach(System.out::println);
   }
 
   @SneakyThrows
-  private static List<Food> process(XMLStreamReader reader) {
+  private List<Food> process(XMLStreamReader reader) {
 
-    List<Food> menu = new ArrayList<>();
+//    return reader.toStream() // sequential
+//        .filter(type -> type == START_ELEMENT)
+//        .mapToObj(__ -> reader.getLocalName())
+//        .map(MenuTagName::getElementTagName)
+//        .filter(menuTagName -> menuTagName == FOOD)
+//        .map(__ -> reader)
+//        .map(StaxMenuParser::toFood);
 
-    Food food = null;
-
+    FoodBuilder foodBuilder = null;
     MenuTagName elementName = null;
+    val menu = new ArrayList<Food>();
 
     while (reader.hasNext()) {
 
@@ -52,26 +57,38 @@ public class StaxMenuParser {
         case START_ELEMENT -> {
           elementName = MenuTagName.getElementTagName(reader.getLocalName());
           if (elementName == FOOD)
-            food = new Food(parseInt(reader.getAttributeValue(null, "id")));
+            foodBuilder = Food.builder()
+                .id(parseInt(reader.getAttributeValue(null, "id")));
         }
 
         case CHARACTERS -> {
-          String text = reader.getText().trim();
+          assert foodBuilder != null;
+          val text = reader.getText().trim();
           if (text.isEmpty()) break;
-          switch (elementName) {
-            case NAME -> food.setName(text);
-            case PRICE -> food.setPrice(text);
-            case DESCRIPTION -> food.setDescription(text);
-            case CALORIES -> food.setCalories(parseInt(text));
+          switch (Objects.requireNonNull(elementName)) {
+            case NAME -> foodBuilder.name(text);
+            case PRICE -> foodBuilder.price(text);
+            case DESCRIPTION -> foodBuilder.description(text);
+            case CALORIES -> foodBuilder.calories(parseInt(text));
           }
         }
 
         case END_ELEMENT -> {
+          assert foodBuilder != null;
           elementName = MenuTagName.getElementTagName(reader.getLocalName());
-          if (elementName == FOOD) menu.add(food);
+          if (elementName == FOOD) menu.add(foodBuilder.build());
         }
       }
     }
     return menu;
   }
+
+//  private Food toFood(XMLStreamReader reader) {
+//    val foodBuilder = Food.builder();
+//
+//    return reader.toStream()
+//        .takeWhile(type ->
+//                       type == END_ELEMENT
+//                           && MenuTagName.getElementTagName(reader.getLocalName()) == FOOD)
+//  }
 }

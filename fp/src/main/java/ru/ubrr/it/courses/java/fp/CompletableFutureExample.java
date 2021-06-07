@@ -1,8 +1,6 @@
-package fp;
+package ru.ubrr.it.courses.java.fp;
 
-import io.vavr.CheckedFunction0;
 import io.vavr.CheckedFunction1;
-import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;

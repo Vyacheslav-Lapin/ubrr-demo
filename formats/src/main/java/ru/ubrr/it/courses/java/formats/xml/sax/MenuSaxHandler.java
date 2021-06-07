@@ -10,14 +10,15 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 import ru.ubrr.it.courses.java.formats.xml.Food;
+import ru.ubrr.it.courses.java.formats.xml.Food.FoodBuilder;
 import ru.ubrr.it.courses.java.formats.xml.MenuTagName;
 
 public class MenuSaxHandler extends DefaultHandler {
 
   @Getter
-  List<Food> foods = new ArrayList<>();
+  final List<Food> foods = new ArrayList<>();
 
-  Food food;
+  FoodBuilder foodBuilder;
   StringBuilder text;
 
   @Override
@@ -36,7 +37,7 @@ public class MenuSaxHandler extends DefaultHandler {
 
     text = new StringBuilder();
     if (MenuTagName.from(localName) == FOOD)
-      food = new Food(Integer.parseInt(attributes.getValue("id")));
+      foodBuilder = Food.builder().id(Integer.parseInt(attributes.getValue("id")));
   }
 
   @Override
@@ -47,13 +48,13 @@ public class MenuSaxHandler extends DefaultHandler {
   @Override
   public void endElement(String uri, String localName, String qName) {
     switch (MenuTagName.from(qName)) {
-      case NAME -> food.setName(text.toString());
-      case PRICE -> food.setPrice(text.toString());
-      case DESCRIPTION -> food.setDescription(text.toString());
-      case CALORIES -> food.setCalories(Integer.parseInt(text.toString()));
+      case NAME -> foodBuilder.name(text.toString());
+      case PRICE -> foodBuilder.price(text.toString());
+      case DESCRIPTION -> foodBuilder.description(text.toString());
+      case CALORIES -> foodBuilder.calories(Integer.parseInt(text.toString()));
       case FOOD -> {
-        foods.add(food);
-        food = null;
+        foods.add(foodBuilder.build());
+        foodBuilder = null;
       }
     }
 

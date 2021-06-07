@@ -47,6 +47,12 @@
     <jcip-annotations.version>1.0</jcip-annotations.version>
     <spotbugs.version>4.2.2</spotbugs.version>
     <error_prone_annotations.version>2.5.1</error_prone_annotations.version>
+
+    <dom.version>2.3.0-jaxb-1.0.6</dom.version>
+    <jaxb.version>2.3.1</jaxb.version>
+    <jaxb.version>2.3.1</jaxb.version>
+    <javax.activation-api.version>1.2.0</javax.activation-api.version>
+    <jaxb-runtime.version>3.0.2-b01</jaxb-runtime.version>
     <!--endregion-->
 
     <!--region test-libs-->
@@ -112,6 +118,35 @@
         <artifactId>error_prone_annotations</artifactId>
         <version>${error_prone_annotations.version}</version>
         <scope>provided</scope>
+      </dependency>
+      <!--endregion-->
+
+      <dependency>
+        <groupId>org.w3c</groupId>
+        <artifactId>dom</artifactId>
+        <version>${dom.version}</version>
+      </dependency>
+
+      <!--region JAX-B -->
+      <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>${jaxb.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>javax.activation-api</artifactId>
+        <version>${javax.activation-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>${jaxb-runtime.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-impl</artifactId>
+        <version>${jaxb.version}</version>
       </dependency>
       <!--endregion-->
 

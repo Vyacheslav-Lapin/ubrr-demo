@@ -1,4 +1,7 @@
 # Project exclude paths
-/oop-demo/target/
+/**/target/
 /formats/src/main/resources/domMenu.xml
 /formats/src/main/resources/jdom_menu.xml
+
+/web/tomcat/
+/web/logs/

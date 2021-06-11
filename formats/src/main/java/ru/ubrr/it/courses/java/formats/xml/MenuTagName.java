@@ -3,7 +3,7 @@ package ru.ubrr.it.courses.java.formats.xml;
 public enum MenuTagName {
   NAME, PRICE, DESCRIPTION, CALORIES, FOOD, BREAKFAST_MENU;
 
-  static public MenuTagName from(String qName) {
+  public static MenuTagName from(String qName) {
     return MenuTagName.valueOf(
         qName
             .toUpperCase()

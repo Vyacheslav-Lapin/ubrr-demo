@@ -8,12 +8,14 @@ import java.util.logging.Logger;
 import javax.sql.DataSource;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Getter
 @Setter
+@Accessors(chain = false)
 public abstract class DefaultDataSource implements DataSource, Supplier<Connection> {
 
   @NonFinal

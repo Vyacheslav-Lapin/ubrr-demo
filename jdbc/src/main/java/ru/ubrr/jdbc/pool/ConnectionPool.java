@@ -12,7 +12,7 @@ import lombok.Cleanup;
 import lombok.SneakyThrows;
 import lombok.experimental.NonFinal;
 import lombok.val;
-import ru.ubrr.jdbc.properties.PropertiesBinder;
+import ru.ubrr.it.io.properties.PropertiesBinder;
 
 //@ExtensionMethod(PropertiesBinder.class)
 public enum ConnectionPool implements Supplier<Connection>, Closeable {
@@ -29,14 +29,15 @@ public enum ConnectionPool implements Supplier<Connection>, Closeable {
   ConnectionPool() {
     val connectionFactory = PropertiesBinder.from(ConnectionFactory.class);
 
-    val pooledConnectionFactory = Function2.of(PooledConnection::new)
-                                      .reversed()
-                                      .apply(this::closePolledConnection);
+    val pooledConnectionFactory =
+        Function2.of(PooledConnection::new)
+            .reversed()
+            .apply(this::closePolledConnection);
 
     pooledConnections = connectionFactory.get()
-                            .map(pooledConnectionFactory)
-                            .collect(Collectors.toCollection(
-                                connectionFactory.toSizedCollection(ArrayBlockingQueue::new)));
+        .map(pooledConnectionFactory)
+        .collect(Collectors.toCollection(
+            connectionFactory.toSizedCollection(ArrayBlockingQueue::new)));
 
     val initSqlFilesContent = connectionFactory.getInitSqlFilesContent();
 

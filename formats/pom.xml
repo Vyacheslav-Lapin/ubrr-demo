@@ -12,13 +12,20 @@
 
   <artifactId>formats</artifactId>
 
+  <properties>
+
+    <!--region Plugins-->
+    <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+    <!--endregion-->
+
+  </properties>
+
   <dependencies>
 
-    <!--<dependency>-->
-    <!--  <groupId>org.example</groupId>-->
-    <!--  <artifactId>fp</artifactId>-->
-    <!--  <version>${revision}</version>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>fp</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.w3c</groupId>
@@ -54,5 +61,35 @@
     </dependency>
 
   </dependencies>
+
+  <build>
+
+    <plugins>
+
+      <!--<plugin>-->
+      <!--  <groupId>org.codehaus.mojo</groupId>-->
+      <!--  <artifactId>exec-maven-plugin</artifactId>-->
+      <!--  <version>${exec-maven-plugin.version}</version>-->
+      <!--  <executions>-->
+      <!--    <execution>-->
+      <!--      <id>generate-ws-classes</id>-->
+      <!--      <phase>generate-sources</phase>-->
+      <!--      <goals>-->
+      <!--        <goal>exec</goal>-->
+      <!--      </goals>-->
+      <!--    </execution>-->
+      <!--  </executions>-->
+      <!--  <configuration>-->
+      <!--    <executable>bash</executable>-->
+      <!--    <workingDirectory>src/main/resources</workingDirectory>-->
+      <!--    <commandLineArgs>generateWsClasses.sh</commandLineArgs>-->
+      <!--  </configuration>-->
+      <!--</plugin>-->
+
+    </plugins>
+
+
+
+  </build>
 
 </project>

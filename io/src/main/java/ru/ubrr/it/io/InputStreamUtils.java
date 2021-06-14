@@ -24,7 +24,7 @@ public class InputStreamUtils {
   }
 
   public Optional<String> getFileAsString(String fileName) {
-    val path = String.format("/%s", fileName);
+    val path = fileName.startsWith("/") ? fileName : "/%s".formatted(fileName);
     return Optional.ofNullable(InputStreamUtils.class.getResource(path))
                .map(URL::getFile)
                .map(Paths::get)

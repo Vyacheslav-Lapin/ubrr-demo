@@ -55,7 +55,7 @@
     <javax.activation-api.version>1.2.0</javax.activation-api.version>
     <jaxb-runtime.version>3.0.2-b01</jaxb-runtime.version>
     <jdom2.version>2.0.6</jdom2.version>
-    <rt.version>3.0.1</rt.version>
+    <rt.version>2.3.4</rt.version>
 
     <tomcat.version>9.0.46</tomcat.version>
     <javaee-api.version>8.0.1</javaee-api.version>
@@ -235,6 +235,14 @@
         <artifactId>javaee-api</artifactId>
         <version>${javaee-api.version}</version>
         <scope>provided</scope>
+      </dependency>
+      <!--endregion-->
+
+      <!--region modules-->
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>fp</artifactId>
+        <version>${revision}</version>
       </dependency>
       <!--endregion-->
 

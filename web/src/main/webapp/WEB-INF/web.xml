@@ -3,32 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0"
-         metadata-complete="true">
+         version="4.0">
+         <!--metadata-complete="true"-->
 
   <display-name>Welcome to Tomcat</display-name>
   <description>
     Welcome to Tomcat
   </description>
 
-  <servlet>
-    <servlet-name>Main</servlet-name>
-    <servlet-class>ru.ubrr.it.courses.java.web.controller.SimpleControllerExample</servlet-class>
-  </servlet>
+  <!--<servlet>-->
+  <!--  <servlet-name>Controller</servlet-name>-->
+  <!--  <servlet-class>ru.ubrr.it.courses.java.web.controller.SimpleControllerExample</servlet-class>-->
+  <!--</servlet>-->
 
   <servlet>
-    <servlet-name>Controller</servlet-name>
+    <servlet-name>Main</servlet-name>
     <jsp-file>/WEB-INF/jsp/main.jsp</jsp-file>
   </servlet>
+
+  <!--<servlet-mapping>-->
+  <!--  <servlet-name>Controller</servlet-name>-->
+  <!--  <url-pattern>/hello</url-pattern>-->
+  <!--</servlet-mapping>-->
 
   <servlet-mapping>
     <servlet-name>Main</servlet-name>
     <url-pattern>/main</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Controller</servlet-name>
-    <url-pattern>/hello</url-pattern>
   </servlet-mapping>
 
 </web-app>

@@ -11,20 +11,24 @@
     Welcome to Tomcat
   </description>
 
-  <!--<servlet>-->
-  <!--  <servlet-name>Controller</servlet-name>-->
-  <!--  <servlet-class>ru.ubrr.it.courses.java.web.controller.SimpleControllerExample</servlet-class>-->
-  <!--</servlet>-->
+  <servlet>
+    <servlet-name>ControllerExample</servlet-name>
+    <servlet-class>ru.ubrr.it.courses.java.web.controller.ControllerExample</servlet-class>
+    <init-param>
+      <param-name>param2</param-name>
+      <param-value>Мама мыла раму!</param-value>
+    </init-param>
+  </servlet>
 
   <servlet>
     <servlet-name>Main</servlet-name>
     <jsp-file>/WEB-INF/jsp/main.jsp</jsp-file>
   </servlet>
 
-  <!--<servlet-mapping>-->
-  <!--  <servlet-name>Controller</servlet-name>-->
-  <!--  <url-pattern>/hello</url-pattern>-->
-  <!--</servlet-mapping>-->
+  <servlet-mapping>
+    <servlet-name>ControllerExample</servlet-name>
+    <url-pattern>/tomain</url-pattern>
+  </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>Main</servlet-name>

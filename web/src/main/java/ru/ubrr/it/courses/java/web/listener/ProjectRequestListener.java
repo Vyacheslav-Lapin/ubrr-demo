@@ -1,4 +1,4 @@
-package ru.ubrr.it.courses.java.web.controller;
+package ru.ubrr.it.courses.java.web.listener;
 
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;

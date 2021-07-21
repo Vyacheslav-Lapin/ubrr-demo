@@ -5,3 +5,5 @@
 
 /web/tomcat/
 /web/logs/
+
+/activemq-data/

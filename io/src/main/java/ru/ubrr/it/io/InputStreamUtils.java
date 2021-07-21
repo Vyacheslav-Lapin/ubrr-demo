@@ -15,7 +15,6 @@ import lombok.val;
 public class InputStreamUtils {
 
   public void withFileInputStream(String fileName, CheckedConsumer<InputStream> inputStreamConsumer) {
-
     if (!fileName.startsWith("/")) fileName = "/" + fileName;
     if (!fileName.endsWith(".properties")) fileName += ".properties";
     inputStreamConsumer.unchecked().accept(
@@ -31,4 +30,6 @@ public class InputStreamUtils {
                .map(CheckedFunction1.<Path, String>narrow(Files::readString)
                         .recover(throwable -> null));
   }
+
+
 }

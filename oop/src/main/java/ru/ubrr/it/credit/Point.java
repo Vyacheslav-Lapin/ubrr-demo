@@ -1,6 +1,5 @@
 package ru.ubrr.it.credit;
 
-import java.awt.*;
 import java.util.Objects;
 import java.util.Random;
 

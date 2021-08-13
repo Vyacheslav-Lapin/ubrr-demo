@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+          http://maven.apache.org/POM/4.0.0
+          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.example</groupId>
   <artifactId>ubrr-demo</artifactId>
   <version>${revision}</version>
+
   <packaging>pom</packaging>
+
   <modules>
-    <module>oop-demo</module>
+    <module>oop</module>
     <module>strings</module>
     <module>io</module>
     <module>fp</module>
@@ -22,7 +30,7 @@
   <properties>
 
     <!--region General-->
-    <maven.compiler.release>16</maven.compiler.release>
+    <maven.compiler.release>17</maven.compiler.release>
     <revision>1.0-SNAPSHOT</revision>
     <minimal.maven.version>3.8.1</minimal.maven.version>
     <!--endregion-->
@@ -31,31 +39,40 @@
     <!--endregion-->
 
     <!--region libs-->
-    <activemq-all.version>5.16.2</activemq-all.version>
     <lombok.version>1.18.20</lombok.version>
     <vavr.version>1.0.0-alpha-3</vavr.version>
+    <logback-classic.version>1.3.0-alpha5</logback-classic.version>
+
     <h2.version>1.4.200</h2.version>
     <postgresql.version>42.2.23</postgresql.version>
     <HikariCP.version>5.0.0</HikariCP.version>
-    <logback-classic.version>1.3.0-alpha5</logback-classic.version>
-    <checker.version>3.16.0</checker.version>
-    <annotations.version>21.0.1</annotations.version>
+
+    <checker.version>3.17.0</checker.version>
+    <annotations.version>22.0.0</annotations.version>
     <jcip-annotations.version>1.0</jcip-annotations.version>
     <spotbugs.version>4.3.0</spotbugs.version>
-    <error_prone_annotations.version>2.7.1</error_prone_annotations.version>
+    <error_prone_annotations.version>2.8.1</error_prone_annotations.version>
+
+    <activemq-all.version>5.16.2</activemq-all.version>
     <dom.version>2.3.0-jaxb-1.0.6</dom.version>
     <jaxb.version>2.3.1</jaxb.version>
+    <jaxb-runtime.version>3.0.2</jaxb-runtime.version>
+    <jackson-databind.version>2.13.0-rc1</jackson-databind.version>
     <javax.activation-api.version>1.2.0</javax.activation-api.version>
-    <jaxb-runtime.version>3.0.2-b01</jaxb-runtime.version>
     <jdom2.version>2.0.6</jdom2.version>
-    <rt.version>2.3.4</rt.version>
-    <tomcat.version>9.0.50</tomcat.version>
+    <rt.version>2.3.5</rt.version>
+
+    <tomcat.version>9.0.52</tomcat.version>
     <javaee-api.version>8.0.1</javaee-api.version>
     <!--endregion-->
 
     <!--region test-libs-->
     <junit-jupiter.version>5.7.2</junit-jupiter.version>
     <assertj.version>3.20.2</assertj.version>
+    <!--endregion-->
+
+    <!--region modules-->
+
     <!--endregion-->
 
     <!--region plugins-->
@@ -70,9 +87,7 @@
     <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
     <!--endregion-->
 
-    <jackson-databind.version>2.12.3</jackson-databind.version>
   </properties>
-
 
   <dependencyManagement>
     <dependencies>
@@ -167,8 +182,14 @@
         <artifactId>rt</artifactId>
         <version>${rt.version}</version>
       </dependency>
+      <dependency>
 
-      <!--region H2 -->
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson-databind.version}</version>
+      </dependency>
+
+      <!--region DB -->
       <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
@@ -187,6 +208,7 @@
         <version>${HikariCP.version}</version>
       </dependency>
       <!-- endregion -->
+
       <!--region Test dependency management (JUnit-Jupiter, AssertJ, Hamcrest, Mockito, JUnit-Vintage)-->
       <dependency>
         <groupId>org.junit.jupiter</groupId>
@@ -239,16 +261,60 @@
       <!--region modules-->
       <dependency>
         <groupId>org.example</groupId>
+        <artifactId>oop</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>strings</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>io</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
         <artifactId>fp</artifactId>
         <version>${revision}</version>
       </dependency>
-      <!--endregion-->
-
       <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>${jackson-databind.version}</version>
+        <groupId>org.example</groupId>
+        <artifactId>exceptions</artifactId>
+        <version>${revision}</version>
       </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>collections</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>concurrency</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>jdbc</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>formats</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>web</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>jms</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <!--endregion-->
 
     </dependencies>
   </dependencyManagement>
@@ -310,6 +376,7 @@
     <!--endregion-->
 
   </dependencies>
+
   <build>
     <defaultGoal>clean verify</defaultGoal>
 
@@ -351,20 +418,20 @@
           <!--</configuration>-->
         </plugin>
         <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>properties-maven-plugin</artifactId>
-          <version>${properties-maven-plugin.version}</version>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${maven-enforcer-plugin.version}</version>
           <executions>
             <execution>
-              <phase>initialize</phase>
+              <id>enforce-maven</id>
               <goals>
-                <goal>read-project-properties</goal>
+                <goal>enforce</goal>
               </goals>
               <configuration>
-                <files>
-                  <!--suppress MavenModelInspection -->
-                  <file>${maven.multiModuleProjectDirectory}/maven.properties</file>
-                </files>
+                <rules>
+                  <requireMavenVersion>
+                    <version>${minimal.maven.version}</version>
+                  </requireMavenVersion>
+                </rules>
               </configuration>
             </execution>
           </executions>
@@ -385,20 +452,20 @@
           <version>${sonar-maven-plugin.version}</version>
         </plugin>
         <plugin>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <version>${maven-enforcer-plugin.version}</version>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>properties-maven-plugin</artifactId>
+          <version>${properties-maven-plugin.version}</version>
           <executions>
             <execution>
-              <id>enforce-maven</id>
+              <phase>initialize</phase>
               <goals>
-                <goal>enforce</goal>
+                <goal>read-project-properties</goal>
               </goals>
               <configuration>
-                <rules>
-                  <requireMavenVersion>
-                    <version>${minimal.maven.version}</version>
-                  </requireMavenVersion>
-                </rules>
+                <files>
+                  <!--suppress MavenModelInspection -->
+                  <file>${maven.multiModuleProjectDirectory}/maven.properties</file>
+                </files>
               </configuration>
             </execution>
           </executions>

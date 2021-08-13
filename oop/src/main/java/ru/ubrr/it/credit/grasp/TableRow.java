@@ -17,8 +17,8 @@ public abstract sealed class TableRow permits CircleTableRow, SquareTableRow {
 
   public static void toTableString(TableRow[] tables) {
     System.out.println("+----------+-----------+---------+\n|  Type    | parameter |  value  |\n+----------+-----------+---------+");
-    for (int i = 0; i < tables.length; i++) {
-      tables[i].toTableString();
+    for (TableRow table : tables) {
+      table.toTableString();
       System.out.println("+----------+-----------+---------+");
     }
 

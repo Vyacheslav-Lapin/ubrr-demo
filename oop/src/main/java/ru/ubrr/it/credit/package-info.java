@@ -1,4 +1,4 @@
 /**
- * ugwqluhsalkjheqrwe rer  eqreq5 taer tye eywte wety ee rst d wety
+ * Lorem ipsum dolor sit amet
  */
 package ru.ubrr.it.credit;

@@ -32,7 +32,7 @@
     <!--region General-->
     <maven.compiler.release>17</maven.compiler.release>
     <revision>1.0-SNAPSHOT</revision>
-    <minimal.maven.version>3.8.1</minimal.maven.version>
+    <minimal.maven.version>3.8.2</minimal.maven.version>
     <!--endregion-->
 
     <!--region BOM-->
@@ -71,13 +71,9 @@
     <assertj.version>3.20.2</assertj.version>
     <!--endregion-->
 
-    <!--region modules-->
-
-    <!--endregion-->
-
     <!--region plugins-->
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-    <maven.compiler.parameters>true</maven.compiler.parameters>
+    <!--<maven.compiler.parameters>true</maven.compiler.parameters>-->
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
     <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
     <sonar-maven-plugin.version>2.7.1</sonar-maven-plugin.version>
@@ -321,6 +317,10 @@
 
   <dependencies>
     <dependency>
+      <groupId>io.vavr</groupId>
+      <artifactId>vavr</artifactId>
+    </dependency>
+    <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
     </dependency>
@@ -329,11 +329,6 @@
       <artifactId>lombok</artifactId>
       <scope>provided</scope>
       <optional>true</optional>
-    </dependency>
-
-    <dependency>
-      <groupId>io.vavr</groupId>
-      <artifactId>vavr</artifactId>
     </dependency>
 
     <!--region Common Annotations (CheckerFramework, JetBrains, SpotBugs, ErrorProne) -->
@@ -417,6 +412,7 @@
           <!--  <webappDirectory>/sample/servlet/container/deploy/directory</webappDirectory>-->
           <!--</configuration>-->
         </plugin>
+
         <plugin>
           <artifactId>maven-enforcer-plugin</artifactId>
           <version>${maven-enforcer-plugin.version}</version>
@@ -438,6 +434,11 @@
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>${sonar-maven-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
           <artifactId>versions-maven-plugin</artifactId>
           <version>${versions-maven-plugin.version}</version>
           <configuration>
@@ -445,11 +446,6 @@
             <!--suppress MybatisMapperXmlInspection, MavenModelInspection -->
             <rulesUri>file://${maven.multiModuleProjectDirectory}/ruleset.xml</rulesUri>
           </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>sonar-maven-plugin</artifactId>
-          <version>${sonar-maven-plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -463,28 +459,35 @@
               </goals>
               <configuration>
                 <files>
-                  <!--suppress MavenModelInspection -->
+                  <!--suppress MavenModelInspection, MavenModelInspection -->
                   <file>${maven.multiModuleProjectDirectory}/maven.properties</file>
                 </files>
               </configuration>
             </execution>
           </executions>
         </plugin>
+
       </plugins>
     </pluginManagement>
 
     <plugins>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
-        <artifactId>properties-maven-plugin</artifactId>
+        <artifactId>versions-maven-plugin</artifactId>
       </plugin>
       <plugin>
-        <artifactId>maven-enforcer-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
       </plugin>
     </plugins>
+
   </build>
+
 </project>
